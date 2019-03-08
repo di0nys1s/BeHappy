@@ -5,7 +5,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/motivation"
+    android:background="@drawable/motivation2_bg"
     tools:context=".MainActivity">
 
     <ImageView
@@ -13,7 +13,7 @@
         android:src="@drawable/lilly"
         android:layout_centerHorizontal="true"
         android:layout_width="500dp"
-        android:layout_marginTop="18dp"
+        android:layout_marginTop="40dp"
         android:layout_height="120dp" />
 
     <android.support.v4.view.ViewPager

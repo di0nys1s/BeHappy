@@ -42,6 +42,7 @@ public class MainActivity extends AppCompatActivity {
                     );
                     fragmentList.add(quoteFragment);
                 }
+
                 // very important
                 quoteViewPagerAdapter.notifyDataSetChanged();
             }
