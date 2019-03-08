@@ -37,6 +37,7 @@
         android:layout_centerHorizontal="true"
         android:fontFamily="@font/bad_script"
         android:textSize="45sp"
+        android:textColor="@color/white"
         android:text="Author" />
 
 

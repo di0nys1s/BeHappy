@@ -6,7 +6,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 import com.di0nys1s.behappy.Data.QuoteData;
+import com.di0nys1s.behappy.Data.QuoteListAsyncResponse;
 import com.di0nys1s.behappy.Data.QuoteViewPagerAdapter;
+import com.di0nys1s.behappy.Model.Quote;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,12 +30,24 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private List<Fragment> getFragments() {
-        List<Fragment> fragmentList = new ArrayList<>();
+        final List<Fragment> fragmentList = new ArrayList<>();
 
-        for (int i = 0; i < 5; i++) {
-            QuoteFragment quoteFragment = QuoteFragment.newInstance("Programmers are the best", "James Bond");
-            fragmentList.add(quoteFragment);
-        }
+        new QuoteData().getQuotes(new QuoteListAsyncResponse() {
+            @Override
+            public void processFinished(ArrayList<Quote> quotes) {
+                for (int i = 0; i < quotes.size(); i++) {
+                    QuoteFragment quoteFragment = QuoteFragment.newInstance(
+                            quotes.get(i).getQuote(),
+                            quotes.get(i).getAuthor()
+                    );
+                    fragmentList.add(quoteFragment);
+                }
+                // very important
+                quoteViewPagerAdapter.notifyDataSetChanged();
+            }
+        });
+
+
 
         return  fragmentList;
     }
